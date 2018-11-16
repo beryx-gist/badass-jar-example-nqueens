@@ -43,7 +43,7 @@ To check the validity of `module-info.java` execute:
 ./gradlew -PjavaCompatibility=9 build
 ```
 
-Note that [Travis](https://github.com/beryx-gist/badass-jar-example-nqueens/blob/master/.travis.yml) is configured
+Note that [Travis](https://github.com/beryx-gist/badass-jar-example-nqueens/blob/master/travis-build.sh) is configured
 to run gradle both with and without the `javaCompatibility` project property: 
 ```
 ./gradlew -PjavaCompatibility=9 --no-daemon -i -s build
