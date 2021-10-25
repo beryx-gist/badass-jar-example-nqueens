@@ -1,7 +1,6 @@
-
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/beryx-gist/badass-jar-example-nqueens/blob/master/LICENSE)
-[![Build Status](https://img.shields.io/travis/beryx-gist/badass-jar-example-nqueens/master.svg?label=Build)](https://travis-ci.org/beryx-gist/badass-jar-example-nqueens)
+[![Build Status](https://img.shields.io/github/workflow/status/beryx-gist/badass-jar-example-nqueens/build)](https://github.com/beryx-gist/badass-jar-example-nqueens/actions?query=workflow%22build%22)
 
 ## Badass-Jar example N-Queens ##
 
@@ -14,7 +13,7 @@ The plugin is configured in `build.gradle` as follows:
 ```
 plugins {
     id 'java'
-    id "org.beryx.jar" version "1.0.0"
+    id "org.beryx.jar" version "2.0.0-rc-1"
     ...
 }
 ...
@@ -43,9 +42,8 @@ To check the validity of `module-info.java` execute:
 ./gradlew -PjavaCompatibility=11 build
 ```
 
-Note that [Travis](https://github.com/beryx-gist/badass-jar-example-nqueens/blob/master/travis-build.sh) is configured
-to run gradle both with and without the `javaCompatibility` project property: 
+Note that [the GitHub Actions](https://github.com/beryx-gist/badass-jar-example-nqueens/actions) are configured to run Gradle both with and without the `javaCompatibility` project property:
 ```
-./gradlew -PjavaCompatibility=11 --no-daemon -i -s build
-./gradlew --no-daemon -i -s build
+./gradlew -PjavaCompatibility=11 build
+./gradlew build
 ```
