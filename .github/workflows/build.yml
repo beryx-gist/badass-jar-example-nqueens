@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Build with with javaCompatibility=11
-      run: ./gradlew $GRADLE_BUILD_OPTS -PjavaCompatibility=11 build
-    - name: Build with default compatibility
-      run: ./gradlew $GRADLE_BUILD_OPTS build
+    - name: Build with with default compatibility (11)
+      run: ./gradlew $GRADLE_BUILD_OPTS clean build
+    - name: Build with javaCompatibility=8
+      run: ./gradlew $GRADLE_BUILD_OPTS -PjavaCompatibility=8 clean build
