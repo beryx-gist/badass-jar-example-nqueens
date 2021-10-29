@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-//    id "org.javamodularity.moduleplugin" version "1.8.10"
-    id "org.beryx.jar" version "2.0.0-rc-1"
+    id "org.beryx.jar" version "2.0.0-rc-3-SNAPSHOT"
     id "com.github.hierynomus.license" version "0.16.1"
 }
 
@@ -9,7 +8,6 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
 group = 'org.beryx.jar.example'
 
 dependencies {
@@ -21,14 +19,18 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-engine"
 }
 
+moduleConfig {
+    version = project.version
+}
+
+compileJava {
+    options.release = (findProperty('javaCompatibility') ?: 11) as int
+}
+
 jar {
     manifest {
         attributes 'Implementation-Title': archivesBaseName,
                 'Implementation-Version': archiveVersion
-    }
-    modularity {
-        moduleInfoPath = 'src/main/module/module-info.java'
-        multiRelease = true
     }
 }
 
