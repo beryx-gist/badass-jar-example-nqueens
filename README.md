@@ -13,37 +13,27 @@ The plugin is configured in `build.gradle` as follows:
 ```
 plugins {
     id 'java'
-    id "org.beryx.jar" version "2.0.0-rc-1"
+    id "org.beryx.jar" version "2.0.0-rc-3"
     ...
 }
 ...
-sourceCompatibility = 1.8
+moduleConfig {
+    version = project.version
+}
+
+compileJava {
+    options.release = (findProperty('javaCompatibility') ?: 11) as int
+}
 ...
 ```
 
 ### Usage
+To build a modular jar that targets Java 11 execute:
+```
+./gradlew build
+```
+
 To build a modular jar that targets Java 8 execute:
 ```
-./gradlew build
-```
-The above command does not check the validity of `module-info.java`.
-You can convince yourself of this by replacing the content of `module-info.java` with: 
-```
-module foo.bar {
-    exports bar.foo;
-    requires baz.qux;
-}
-```
-The above gradle command will still succeed, although the new `module-info.java` is invalid.
-
-
-To check the validity of `module-info.java` execute:
-```
-./gradlew -PjavaCompatibility=11 build
-```
-
-Note that [the GitHub Actions](https://github.com/beryx-gist/badass-jar-example-nqueens/actions) are configured to run Gradle both with and without the `javaCompatibility` project property:
-```
-./gradlew -PjavaCompatibility=11 build
-./gradlew build
+./gradlew -PjavaCompatibility=8 build
 ```
