@@ -13,7 +13,7 @@ The plugin is configured in `build.gradle` as follows:
 ```
 plugins {
     id 'java'
-    id "org.beryx.jar" version "2.0.0-rc-3"
+    id "org.beryx.jar" version "2.0.0-rc-4"
     ...
 }
 ...
